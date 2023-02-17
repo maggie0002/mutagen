@@ -31,7 +31,7 @@ import (
 )
 
 // runMain is the entry point for the run command.
-func runMain(_ *cobra.Command, _ []string) error {
+func RunMain(_ *cobra.Command, _ []string) error {
 	// Attempt to acquire the daemon lock and defer its release.
 	lock, err := daemon.AcquireLock()
 	if err != nil {
@@ -137,7 +137,7 @@ var runCommand = &cobra.Command{
 	Short:        "Run the Mutagen daemon",
 	Args:         cmd.DisallowArguments,
 	Hidden:       true,
-	RunE:         runMain,
+	RunE:         RunMain,
 	SilenceUsage: true,
 }
 

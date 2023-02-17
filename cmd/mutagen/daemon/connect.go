@@ -90,7 +90,7 @@ func Connect(autostart, enforceVersionMatch bool) (*grpc.ClientConn, error) {
 				if autostart && remainingPostAutostatAttempts > 0 {
 					if !invokedStart {
 						statusLinePrinter.Print("Attempting to start Mutagen daemon...")
-						startMain(nil, nil)
+						StartMain(nil, nil)
 						invokedStart = true
 					}
 					time.Sleep(autostartWaitInterval)

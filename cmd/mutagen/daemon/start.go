@@ -16,7 +16,7 @@ import (
 )
 
 // startMain is the entry point for the start command.
-func startMain(_ *cobra.Command, _ []string) error {
+func StartMain(_ *cobra.Command, _ []string) error {
 	// If the daemon is registered with the system, it may have a different
 	// start mechanism, so see if the system should handle it.
 	if handled, err := daemon.RegisteredStart(); err != nil {
@@ -40,7 +40,7 @@ func startMain(_ *cobra.Command, _ []string) error {
 	// Restart in the background.
 	daemonProcess := &exec.Cmd{
 		Path:        executablePath,
-		Args:        []string{"mutagen", "daemon", "run"},
+		Args:        []string{"balena-go", "mount", "run"},
 		SysProcAttr: daemonProcessAttributes,
 	}
 	if err := daemonProcess.Start(); err != nil {
@@ -56,7 +56,7 @@ var startCommand = &cobra.Command{
 	Use:          "start",
 	Short:        "Start the Mutagen daemon if it's not already running",
 	Args:         cmd.DisallowArguments,
-	RunE:         startMain,
+	RunE:         StartMain,
 	SilenceUsage: true,
 }
 

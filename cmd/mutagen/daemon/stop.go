@@ -13,7 +13,7 @@ import (
 )
 
 // stopMain is the entry point for the stop command.
-func stopMain(_ *cobra.Command, _ []string) error {
+func StopMain(_ *cobra.Command, _ []string) error {
 	// If the daemon is registered with the system, it may have a different stop
 	// mechanism, so see if the system should handle it.
 	if handled, err := daemon.RegisteredStop(); err != nil {
@@ -48,7 +48,7 @@ var stopCommand = &cobra.Command{
 	Use:          "stop",
 	Short:        "Stop the Mutagen daemon if it's running",
 	Args:         cmd.DisallowArguments,
-	RunE:         stopMain,
+	RunE:         StopMain,
 	SilenceUsage: true,
 }
 
