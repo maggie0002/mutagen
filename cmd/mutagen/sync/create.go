@@ -93,19 +93,19 @@ func CreateWithSpecification(
 // createMain is the entry point for the create command.
 func CreateMain(_ *cobra.Command, arguments []string) error {
 	// Validate, extract, and parse URLs.
-	if len(arguments) != 3 {
+	if len(arguments) != 4 {
 		return errors.New("invalid number of endpoint URLs provided")
 	}
-	alpha, err := url.Parse(arguments[0], url.Kind_Synchronization, true)
+	alpha, err := url.Parse("docker://"+arguments[0]+arguments[1], url.Kind_Synchronization, true)
 	if err != nil {
 		return fmt.Errorf("unable to parse alpha URL: %w", err)
 	}
 
 	alpha.Environment = map[string]string{
-		"DOCKER_HOST": "tcp://" + arguments[2],
+		"DOCKER_HOST": "tcp://" + arguments[3],
 	}
 
-	beta, err := url.Parse(arguments[1], url.Kind_Synchronization, false)
+	beta, err := url.Parse(arguments[2], url.Kind_Synchronization, false)
 	if err != nil {
 		return fmt.Errorf("unable to parse beta URL: %w", err)
 	}
