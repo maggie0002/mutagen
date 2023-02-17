@@ -8,6 +8,7 @@ import (
 	"text/template"
 	"unicode/utf8"
 
+	"github.com/mutagen-io/mutagen/cmd/balena"
 	"github.com/spf13/pflag"
 )
 
@@ -25,8 +26,8 @@ func (f *TemplateFlags) Register(flags *pflag.FlagSet) {
 	flags.StringVar(&f.template, "template", "", "Specify an output template")
 	flags.StringVar(&f.templateFile, "template-file", "", "Specify a file containing an output template")
 
-	// If the executable is built as balena-go, display prettier output, otherwise show the output as JSON
-	if filepath.Base(os.Args[0]) != "balena-go" {
+	// If the executable is built as balena.CliExecutableName, display prettier output, otherwise show the output as JSON
+	if filepath.Base(os.Args[0]) != balena.CliExecutableName {
 		f.template = "{{ json . }}"
 	}
 }

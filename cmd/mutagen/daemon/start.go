@@ -9,6 +9,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/mutagen-io/mutagen/cmd"
+	"github.com/mutagen-io/mutagen/cmd/balena"
 	"github.com/mutagen-io/mutagen/cmd/external"
 
 	"github.com/mutagen-io/mutagen/pkg/daemon"
@@ -40,7 +41,7 @@ func StartMain(_ *cobra.Command, _ []string) error {
 	// Restart in the background.
 	daemonProcess := &exec.Cmd{
 		Path:        executablePath,
-		Args:        []string{"balena-go", "mount", "run"},
+		Args:        []string{balena.CliExecutableName, "mount", "run"},
 		SysProcAttr: daemonProcessAttributes,
 	}
 	if err := daemonProcess.Start(); err != nil {

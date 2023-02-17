@@ -14,6 +14,7 @@ import (
 	"github.com/dustin/go-humanize"
 
 	"github.com/mutagen-io/mutagen/cmd"
+	"github.com/mutagen-io/mutagen/cmd/balena"
 	"github.com/mutagen-io/mutagen/cmd/mutagen/daemon"
 
 	"github.com/mutagen-io/mutagen/pkg/configuration/global"
@@ -688,7 +689,7 @@ func init() {
 	flags.StringVar(&createConfiguration.defaultGroupBeta, "default-group-beta", "", "Specify default file/directory group for beta")
 
 	customLabels := []string{
-		"balena-go",
+		balena.CliExecutableName,
 	}
 
 	createConfiguration.labels = customLabels
