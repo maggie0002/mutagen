@@ -59,7 +59,7 @@ func TerminateWithSelection(
 }
 
 // terminateMain is the entry point for the terminate command.
-func terminateMain(_ *cobra.Command, arguments []string) error {
+func TerminateMain(_ *cobra.Command, arguments []string) error {
 	// Create session selection specification.
 	selection := &selection.Selection{
 		All:            terminateConfiguration.all,
@@ -85,7 +85,7 @@ func terminateMain(_ *cobra.Command, arguments []string) error {
 var terminateCommand = &cobra.Command{
 	Use:          "terminate [<session>...]",
 	Short:        "Permanently terminate a synchronization session",
-	RunE:         terminateMain,
+	RunE:         TerminateMain,
 	SilenceUsage: true,
 }
 

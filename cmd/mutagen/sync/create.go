@@ -91,7 +91,7 @@ func CreateWithSpecification(
 }
 
 // createMain is the entry point for the create command.
-func createMain(_ *cobra.Command, arguments []string) error {
+func CreateMain(_ *cobra.Command, arguments []string) error {
 	// Validate, extract, and parse URLs.
 	if len(arguments) != 3 {
 		return errors.New("invalid number of endpoint URLs provided")
@@ -482,7 +482,7 @@ func createMain(_ *cobra.Command, arguments []string) error {
 var createCommand = &cobra.Command{
 	Use:          "create <alpha> <beta>",
 	Short:        "Create and start a new synchronization session",
-	RunE:         createMain,
+	RunE:         CreateMain,
 	SilenceUsage: true,
 }
 

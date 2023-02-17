@@ -78,7 +78,7 @@ func ListWithSelection(
 }
 
 // listMain is the entry point for the list command.
-func listMain(_ *cobra.Command, arguments []string) error {
+func ListMain(_ *cobra.Command, arguments []string) error {
 	// Create session selection specification.
 	selection := &selection.Selection{
 		All:            len(arguments) == 0 && listConfiguration.labelSelector == "",
@@ -104,7 +104,7 @@ func listMain(_ *cobra.Command, arguments []string) error {
 var listCommand = &cobra.Command{
 	Use:          "list [<session>...]",
 	Short:        "List existing synchronization sessions and their statuses",
-	RunE:         listMain,
+	RunE:         ListMain,
 	SilenceUsage: true,
 }
 
