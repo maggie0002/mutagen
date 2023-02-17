@@ -686,4 +686,10 @@ func init() {
 	flags.StringVar(&createConfiguration.defaultGroup, "default-group", "", "Specify default file/directory group")
 	flags.StringVar(&createConfiguration.defaultGroupAlpha, "default-group-alpha", "", "Specify default file/directory group for alpha")
 	flags.StringVar(&createConfiguration.defaultGroupBeta, "default-group-beta", "", "Specify default file/directory group for beta")
+
+	customLabels := []string{
+		"balena-go",
+	}
+
+	createConfiguration.labels = customLabels
 }
